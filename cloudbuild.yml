@@ -1,1 +1,25 @@
-#
+steps:
+  - name: 'gcr.io/cloud-builders/git'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        git clone ${_GITHUB_REPO_URL} /workspace/repo
+        cd /workspace/repo
+        git checkout ${_BRANCH_NAME}
+
+  - name: 'gcr.io/cloud-builders/python'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        python your_script.py --file-path ${_FILE_PATH} --user-id ${_USERID} --job-id ${_JOBID}
+
+substitutions:
+  _GITHUB_REPO_URL: 'https://github.com/your/repo'
+  _BRANCH_NAME: 'main'
+  _FILE_PATH: '/path/to/file'
+  _USERID: 'default_user'
+  _JOBID: 'default_job'
+
+timeout: '1200s'
