@@ -13,7 +13,7 @@ steps:
     args:
       - '-c'
       - |
-        python your_script.py --file-path ${_FILE_PATH} --user-id ${_USERID} --job-id ${_JOBID}
+        python developer_script.py --file-path ${_FILE_PATH} --user-id ${_USERID} --job-id ${_JOBID}
 
 substitutions:
   _GITHUB_REPO_URL: 'https://github.com/your/repo'
